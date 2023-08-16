@@ -18,3 +18,24 @@ const { getTotalCards, getTotalMarkets } = storeToRefs(marketsStore);
     </p>
   </div>
 </template>
+
+<style scoped>
+.inner-box {
+  padding: 10px;
+  width: 95%;
+  margin: 15px auto;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(49, 185, 160, 0.869);
+  border-radius: 5px;
+}
+
+#totals {
+  line-height: 1.5em;
+}
+
+#totals p {
+  text-transform: uppercase;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+</style>

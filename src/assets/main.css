@@ -1,7 +1,26 @@
-#app {
+/* #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
 
   font-weight: normal;
+} */
+
+* {
+  box-sizing: border-box;
+  font-family: 'Ubuntu', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #393939;
+  /* background-color: #fff; */
+}
+
+body {
+  padding-top: 10px;
+  background: url(src/assets/80s\ card\ gif.webp);
+  background-repeat: repeat;
+}
+
+label {
+  font-weight: bold;
 }

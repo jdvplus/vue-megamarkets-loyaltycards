@@ -20,3 +20,16 @@ const { marketList } = storeToRefs(marketsStore);
     </div>
   </div>
 </template>
+
+<style scoped>
+.display-box {
+  overflow: auto;
+  padding-top: 10px;
+}
+
+.market-box-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+</style>
