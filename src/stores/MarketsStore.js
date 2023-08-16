@@ -32,7 +32,6 @@ export const useMarketsStore = defineStore('marketsStore', {
 
       // create new market object
       const newMarket = {};
-      newMarket.totalMarkets = this.totalMarkets;
       newMarket.marketCards = 0;
       newMarket.marketId = this.lastMarketId;
       newMarket.location = location;
@@ -41,6 +40,22 @@ export const useMarketsStore = defineStore('marketsStore', {
       // push new market into marketList array
       this.marketList.push(newMarket);
       console.log('marketList array', this.marketList);
+    },
+    deleteMarket(id) {
+      // iterate through marketList array
+      for (let i = 0; i < this.marketList.length; i++) {
+        // check if market ID matches arg
+        if (this.marketList[i].id === id) {
+          this.totalCards -= marketList[i].marketCards; // subtract market cards from total cards
+          this.totalMarkets -= 1; // decrement total markets
+          break;
+        }
+      }
+      // delete market from marketList array
+      this.marketList = this.marketList.filter(
+        (market) => market.marketId !== id
+      );
+      console.log('marketList array after deleting market', this.marketList);
     },
   },
 });

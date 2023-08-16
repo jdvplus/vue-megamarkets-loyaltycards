@@ -6,7 +6,7 @@ const marketsStore = useMarketsStore();
 
 const newMarket = ref('');
 
-const handleSubmit = () => {
+const addMarket = () => {
   if (newMarket.value.length) {
     marketsStore.addMarket(newMarket.value);
     newMarket.value = '';
@@ -19,7 +19,7 @@ const handleSubmit = () => {
 <template>
   <div id="market-creator">
     <h3>Create new market</h3>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="addMarket">
       <label for="locations">Locations:</label>
       <input
         name="locations"

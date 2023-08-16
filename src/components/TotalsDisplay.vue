@@ -3,7 +3,6 @@ import { useMarketsStore } from '../stores/MarketsStore';
 import { storeToRefs } from 'pinia';
 
 const marketsStore = useMarketsStore();
-
 const { getTotalCards, getTotalMarkets } = storeToRefs(marketsStore);
 </script>
 
