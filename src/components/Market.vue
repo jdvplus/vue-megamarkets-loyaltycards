@@ -1,6 +1,7 @@
 <script setup>
 import { useMarketsStore } from '../stores/MarketsStore';
 import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 
 const marketsStore = useMarketsStore();
 const { getTotalCards } = storeToRefs(marketsStore);
@@ -11,10 +12,11 @@ const props = defineProps({
   marketCards: Number,
 });
 
-const getPercentage = () => {
-  if (!getTotalCards) return 0;
-  return ((props.marketCards / getTotalCards) * 100).toFixed(1);
-};
+const cardPercentage = computed(() => {
+  return getTotalCards.value > 0
+    ? ((props.marketCards / getTotalCards.value) * 100).toFixed(1)
+    : 0;
+});
 </script>
 
 <template>
@@ -32,9 +34,13 @@ const getPercentage = () => {
       <strong>Cards: {{ marketCards }} </strong>
     </p>
     <p>
-      <strong>% of total: </strong>
+      <strong>% of total: {{ cardPercentage }} </strong>
     </p>
-    <button id="add-card-btn">Add card</button>
-    <button id="delete-card-btn">Delete card</button>
+    <button id="add-card-btn" @click="marketsStore.addCard(marketId)">
+      Add card
+    </button>
+    <button id="delete-card-btn" @click="marketsStore.deleteCard(marketId)">
+      Delete card
+    </button>
   </div>
 </template>

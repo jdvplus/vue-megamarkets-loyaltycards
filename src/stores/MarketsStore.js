@@ -43,19 +43,45 @@ export const useMarketsStore = defineStore('marketsStore', {
     },
     deleteMarket(id) {
       // iterate through marketList array
-      for (let i = 0; i < this.marketList.length; i++) {
+      this.marketList.forEach((market) => {
         // check if market ID matches arg
-        if (this.marketList[i].id === id) {
-          this.totalCards -= marketList[i].marketCards; // subtract market cards from total cards
+        if (market.marketId === id) {
+          this.totalCards -= market.marketCards; // subtract market cards from total cards
           this.totalMarkets -= 1; // decrement total markets
-          break;
         }
-      }
+      });
+
       // delete market from marketList array
       this.marketList = this.marketList.filter(
         (market) => market.marketId !== id
       );
       console.log('marketList array after deleting market', this.marketList);
+    },
+    addCard(id) {
+      // iterate through marketList array
+      this.marketList.forEach((market) => {
+        // check if market ID matches arg
+        if (market.marketId === id) {
+          market.marketCards += 1; // increment market cards
+          this.totalCards += 1; // increment total cards
+        }
+      });
+    },
+    deleteCard(id) {
+      // iterate through marketList array
+      for (let i = 0; i < this.marketList.length; i++) {
+        // check if market ID matches arg
+        if (this.marketList[i].marketId === id) {
+          // if there are no cards to delete, send alert & return
+          if (!this.marketList[i].marketCards) {
+            alert('There are no cards to delete!');
+            return;
+          }
+
+          this.marketList[i].marketCards -= 1; // decrement market cards
+          this.totalCards -= 1; // decrement total cards
+        }
+      }
     },
   },
 });
